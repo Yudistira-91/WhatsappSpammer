@@ -1,0 +1,6 @@
+venv
+.vscode
+dist
+build
+app.spec
+debug.log
