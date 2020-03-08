@@ -7,14 +7,15 @@ from selenium.webdriver.support import expected_conditions as EC
 import datetime
 import time
 
-def createDriverInstance():
+
+def create_driver():
     options = webdriver.ChromeOptions()
     options.add_argument('log-level=3')
     #options.add_argument('--headless')
     args = ["hide_console", ]
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    options.add_argument("--user-data-dir=C:\\Users\\Barak\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 1")
-    driver = webdriver.Chrome(options=options, executable_path=r'C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe', service_args=args)
+    # options.add_argument("--user-data-dir=C:\\Users\\Barak\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 1")
+    driver = webdriver.Chrome(options=options, executable_path='/usr/local/bin/chromedriver', service_args=args)
     driver.get("https://web.whatsapp.com/")
     return driver
 
@@ -34,8 +35,9 @@ def find_user(username, driver):
             continue
     return False
 
+
 def run(username="Dor", text_file_name="zombie", time_to_wait="10"):
-    driver = createDriverInstance()
+    driver = create_driver()
     is_user_found = find_user(username, driver)
 
     while not is_user_found:
@@ -61,6 +63,7 @@ def run(username="Dor", text_file_name="zombie", time_to_wait="10"):
                 time.sleep(5)
                 break
             continue
+
 
 if __name__ == '__main__':
     run()
