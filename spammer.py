@@ -14,14 +14,14 @@ def create_driver():
     #options.add_argument('--headless')
     args = ["hide_console", ]
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    # options.add_argument("--user-data-dir=C:\\Users\\Barak\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 1")
-    driver = webdriver.Chrome(options=options, executable_path='/usr/local/bin/chromedriver', service_args=args)
+    options.add_argument("--user-data-dir=C:\\Users\\Barak\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 1")
+    driver = webdriver.Chrome(options=options, executable_path='C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe', service_args=args)
     driver.get("https://web.whatsapp.com/")
     return driver
 
 
 def find_user(username, driver):
-    for i in range(5):
+    for _ in range(5):
         try:
             print('\nStarting program...')
             user = WebDriverWait(driver, 60).until(
